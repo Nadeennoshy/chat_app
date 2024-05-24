@@ -2,7 +2,8 @@ import 'package:chat_app/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
+  const CustomButton({super.key,required this.buttonName});
+  final String buttonName;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +17,8 @@ class CustomButton extends StatelessWidget {
       ),
       onPressed: (){}, 
       
-      child: Text('Sign In',
-      style: TextStyle(
+      child: Text(buttonName,
+      style: const TextStyle(
         color: kPrimaryColor,
       ),
       ),
