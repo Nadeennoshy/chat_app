@@ -7,12 +7,17 @@ class ScolarChatText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Scolar Chat',
-    style: TextStyle(
-      color: Colors.white,
-      fontFamily: 'Pacifico',
-      fontSize: 28,
-    ),
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('Scolar Chat',
+        style: TextStyle(
+          color: Colors.white,
+          fontFamily: 'Pacifico',
+          fontSize: 28,
+        ),
+        ),
+      ],
     );
   }
 }

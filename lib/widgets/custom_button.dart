@@ -2,9 +2,9 @@ import 'package:chat_app/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key,required this.buttonName});
+  const CustomButton({super.key,required this.buttonName,required this.onPressed});
   final String buttonName;
-
+  final Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -15,7 +15,7 @@ class CustomButton extends StatelessWidget {
         )
         
       ),
-      onPressed: (){}, 
+      onPressed: onPressed, 
       
       child: Text(buttonName,
       style: const TextStyle(

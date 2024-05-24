@@ -1,4 +1,5 @@
 import 'package:chat_app/constants.dart';
+import 'package:chat_app/views/chat_view.dart';
 import 'package:chat_app/views/register.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_text_form_field.dart';
@@ -17,10 +18,10 @@ class LogInView extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
-            Image.asset(kImage,),
+            const SizedBox(height: 50,),
+            Image.asset(kImage,height: 150,),
             const ScolarChatText(),
             const SizedBox(height: 60,),
             const RegisterText(registerText: 'Sign In',),
@@ -29,7 +30,9 @@ class LogInView extends StatelessWidget {
             const SizedBox(height: 10,),
             const CustomTextFormField(hintText: 'Password',),
             const SizedBox(height: 30,),
-            const CustomButton(buttonName: 'Sign In',),
+            CustomButton(buttonName: 'Sign In',onPressed: () {
+              Navigator.pushNamed(context, ChatView.chatViewId);
+            },),
             const SizedBox(height: 10,),
             NavigateText(
               haveAccount: 'don\'t have an account? ',
