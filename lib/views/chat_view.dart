@@ -1,5 +1,7 @@
 import 'package:chat_app/constants.dart';
+import 'package:chat_app/views/login_view.dart';
 import 'package:chat_app/widgets/chat_bubble.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ChatView extends StatelessWidget {
@@ -23,6 +25,13 @@ class ChatView extends StatelessWidget {
             ),
           ],
         ),
+        actions: [
+          IconButton(onPressed: ()async{
+            await FirebaseAuth.instance.signOut();
+            Navigator.pushNamed(context, LogInView.loginId);
+          },
+           icon: const Icon(Icons.logout,color: Colors.white,)),
+        ],
       ),
       body: Column(
         children: [
