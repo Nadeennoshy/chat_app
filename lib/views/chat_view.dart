@@ -1,6 +1,7 @@
 import 'package:chat_app/constants.dart';
 import 'package:chat_app/views/login_view.dart';
 import 'package:chat_app/widgets/chat_bubble.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      final Stream<QuerySnapshot> messages = FirebaseFirestore.instance.collection('messages').snapshots();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
