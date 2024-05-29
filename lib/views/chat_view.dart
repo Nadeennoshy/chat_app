@@ -15,7 +15,7 @@ class ChatView extends StatelessWidget {
   Widget build(BuildContext context) {
     CollectionReference messages = FirebaseFirestore.instance.collection(kMessageCollection);
     return StreamBuilder<QuerySnapshot>(
-      stream: messages.snapshots(), 
+      stream: messages.orderBy(kCreatedAt).snapshots(), 
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
         if(snapshot.hasData){
           List<MessageModel> messagesList = [];
@@ -62,6 +62,7 @@ class ChatView extends StatelessWidget {
               onSubmitted: (data){
                 messages.add({
                   kMessage: data,
+                  kCreatedAt: DateTime.now(),
                 });
                 controller.clear();
               },
