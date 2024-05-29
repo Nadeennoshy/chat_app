@@ -1,4 +1,5 @@
 import 'package:chat_app/constants.dart';
+import 'package:chat_app/models/message_model.dart';
 import 'package:chat_app/views/login_view.dart';
 import 'package:chat_app/widgets/chat_bubble.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,13 +7,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ChatView extends StatelessWidget {
-  const ChatView({super.key});
+  ChatView({super.key});
   static String chatViewId = 'chatView';
-
+  TextEditingController controller = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
-      final Stream<QuerySnapshot> messages = FirebaseFirestore.instance.collection('messages').snapshots();
-    return Scaffold(
+    CollectionReference messages = FirebaseFirestore.instance.collection(kMessageCollection);
+    return StreamBuilder<QuerySnapshot>(
+      stream: messages.snapshots(), 
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+        if(snapshot.hasData){
+          List<MessageModel> messagesList = [];
+          for(int i=0;i<snapshot.data!.docs.length;i++){
+            messagesList.add(MessageModel.fromJson(snapshot.data!.docs[i]));
+          }
+          return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         automaticallyImplyLeading: false,
@@ -39,14 +49,22 @@ class ChatView extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
+              itemCount: messagesList.length,
               itemBuilder: ((context, index) {
-                return const ChatBubble();
+                return ChatBubble(message: messagesList[index],);
               }),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
+              controller: controller,
+              onSubmitted: (data){
+                messages.add({
+                  kMessage: data,
+                });
+                controller.clear();
+              },
               decoration: InputDecoration(
                 suffixIcon: const Icon(Icons.send,color: kPrimaryColor,),
                 border: OutlineInputBorder(
@@ -58,5 +76,11 @@ class ChatView extends StatelessWidget {
         ],
       ),
     );
+      }else{
+        return Text('Loading.......................');
+      }
+  });
+    
+    
   }
 }
