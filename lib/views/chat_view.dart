@@ -10,6 +10,7 @@ class ChatView extends StatelessWidget {
   ChatView({super.key});
   static String chatViewId = 'chatView';
   TextEditingController controller = TextEditingController();
+  final _controller = ScrollController();
   
   @override
   Widget build(BuildContext context) {
@@ -49,6 +50,7 @@ class ChatView extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
+              controller:_controller,
               itemCount: messagesList.length,
               itemBuilder: ((context, index) {
                 return ChatBubble(message: messagesList[index],);
@@ -65,6 +67,10 @@ class ChatView extends StatelessWidget {
                   kCreatedAt: DateTime.now(),
                 });
                 controller.clear();
+                _controller.animateTo(
+                _controller.position.maxScrollExtent, 
+                duration: const Duration(microseconds: 500), 
+                curve: Curves.easeOut);
               },
               decoration: InputDecoration(
                 suffixIcon: const Icon(Icons.send,color: kPrimaryColor,),
