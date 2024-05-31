@@ -108,7 +108,7 @@ class _LogInViewState extends State<LogInView> {
                   haveAccount: 'don\'t have an account? ',
                   navigateText: 'Sign Up',
                   onTap: () {
-                    Navigator.pushNamed(context, RegisterView.registerId);
+                    Navigator.pushNamed(context, RegisterView.registerId,arguments: emailAddress);
                   },
                 )
               ],

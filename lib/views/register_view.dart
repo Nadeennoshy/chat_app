@@ -108,7 +108,7 @@ class _RegisterViewState extends State<RegisterView> {
                     haveAccount: 'Already have an account? ',
                     navigateText: 'Sign In',
                     onTap: () {
-                      Navigator.pushNamed(context, LogInView.loginId);
+                      Navigator.pushNamed(context, LogInView.loginId,arguments: emailAddress);
                     })
               ],
             ),

@@ -14,9 +14,10 @@ class ChatView extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    var email = ModalRoute.of(context)!.settings.arguments;
     CollectionReference messages = FirebaseFirestore.instance.collection(kMessageCollection);
     return StreamBuilder<QuerySnapshot>(
-      stream: messages.orderBy(kCreatedAt).snapshots(), 
+      stream: messages.orderBy(kCreatedAt,descending: true).snapshots(), 
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
         if(snapshot.hasData){
           List<MessageModel> messagesList = [];
@@ -50,6 +51,7 @@ class ChatView extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
+              reverse: true,
               controller:_controller,
               itemCount: messagesList.length,
               itemBuilder: ((context, index) {
@@ -65,10 +67,11 @@ class ChatView extends StatelessWidget {
                 messages.add({
                   kMessage: data,
                   kCreatedAt: DateTime.now(),
+                  kId : email,
                 });
                 controller.clear();
                 _controller.animateTo(
-                _controller.position.maxScrollExtent, 
+                0.0, 
                 duration: const Duration(microseconds: 500), 
                 curve: Curves.easeOut);
               },
