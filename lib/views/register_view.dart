@@ -81,7 +81,7 @@ class _RegisterViewState extends State<RegisterView> {
                       try {
                         await createNewAccount();
                         showSnackBar(context, 'Success');
-                        Navigator.pushNamed(context, ChatView.chatViewId);
+                        Navigator.pushNamed(context, ChatView.chatViewId,arguments: emailAddress);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
                           showSnackBar(
@@ -108,7 +108,7 @@ class _RegisterViewState extends State<RegisterView> {
                     haveAccount: 'Already have an account? ',
                     navigateText: 'Sign In',
                     onTap: () {
-                      Navigator.pushNamed(context, LogInView.loginId,arguments: emailAddress);
+                      Navigator.pushNamed(context, LogInView.loginId);
                     })
               ],
             ),

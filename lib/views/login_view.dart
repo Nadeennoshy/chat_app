@@ -86,7 +86,7 @@ class _LogInViewState extends State<LogInView> {
                       try {
                         await loginMethod();
                         showSnackBar(context, 'Success');
-                        Navigator.pushNamed(context, ChatView.chatViewId);
+                        Navigator.pushNamed(context, ChatView.chatViewId,arguments: emailAddress);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'invalid-credential') {
                           showSnackBar(context, 'Invalid user');
@@ -108,7 +108,7 @@ class _LogInViewState extends State<LogInView> {
                   haveAccount: 'don\'t have an account? ',
                   navigateText: 'Sign Up',
                   onTap: () {
-                    Navigator.pushNamed(context, RegisterView.registerId,arguments: emailAddress);
+                    Navigator.pushNamed(context, RegisterView.registerId);
                   },
                 )
               ],
