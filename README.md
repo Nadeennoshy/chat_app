@@ -1,16 +1,46 @@
-# chat_app
+# ✍ Simple Chat App
+ - A simple chat application built using Flutter and Firebase.
 
-A new Flutter project.
 
-## Getting Started
+## Features
+  - User authentication (sign-in and sign-up)
+  - Real-time messaging
+  - User-friendly UI
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## 🤳 Screens
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Sign up Screen:** User can create an account using email and password. 
+- **Sign In Screen:** User can login using email and password .
+- **Chat Screen:** User can send messages to other users.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## 📁 File Structure
+
+![image](https://github.com/Nadeennoshy/chat_app/assets/70576667/fde95c08-1b09-446d-b098-d87f6f12437d)
+
+
+
+
+## 📱 UI
+
+![sign up](https://github.com/Nadeennoshy/chat_app/assets/70576667/92b7d517-cb87-4cc2-a66d-f27bff9f7186)
+
+![sign in](https://github.com/Nadeennoshy/chat_app/assets/70576667/db5730ab-023d-46cc-9411-d27d68d77310)
+
+![chat page](https://github.com/Nadeennoshy/chat_app/assets/70576667/9498b914-0e9f-4fd4-8aab-b5dfc236dd6e)
+
+## 🎥 Video
+
+https://github.com/Nadeennoshy/chat_app/assets/70576667/ae110a6b-80a4-4e1d-9d07-ea01bda6f090
+
+
+## 🛠 Dependencies
+
+```pubspec.yaml
+  firebase_core
+  firebase_auth
+  modal_progress_hud_nsn
+  cloud_firestore
+
+```
