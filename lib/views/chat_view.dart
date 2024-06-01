@@ -89,10 +89,10 @@ class ChatView extends StatelessWidget {
                             curve: Curves.easeOut);
                       },
                       decoration: InputDecoration(
-                          suffixIcon: const Icon(
-                            Icons.send,
-                            color: kPrimaryColor,
-                          ),
+                          // suffixIcon: const Icon(
+                          //   Icons.send,
+                          //   color: kPrimaryColor,
+                          // ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
                           )),
