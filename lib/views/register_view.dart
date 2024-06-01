@@ -75,13 +75,12 @@ class _RegisterViewState extends State<RegisterView> {
                   onPressed: () async {
                     if (formKey.currentState!.validate()) {
                       inAsyncCall = true;
-                      setState(() {
-                        
-                      });
+                      setState(() {});
                       try {
                         await createNewAccount();
                         showSnackBar(context, 'Success');
-                        Navigator.pushNamed(context, ChatView.chatViewId,arguments: emailAddress);
+                        Navigator.pushNamed(context, ChatView.chatViewId,
+                            arguments: emailAddress);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
                           showSnackBar(
@@ -93,10 +92,8 @@ class _RegisterViewState extends State<RegisterView> {
                       } catch (e) {
                         showSnackBar(context, e.toString());
                       }
-                      inAsyncCall = false ;
-                      setState(() {
-                        
-                      });
+                      inAsyncCall = false;
+                      setState(() {});
                     }
                   },
                   buttonName: 'Sign Up',

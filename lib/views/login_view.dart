@@ -80,13 +80,12 @@ class _LogInViewState extends State<LogInView> {
                   onPressed: () async {
                     if (formKey.currentState!.validate()) {
                       inAsyncCall = true;
-                      setState(() {
-                        
-                      });
+                      setState(() {});
                       try {
                         await loginMethod();
                         showSnackBar(context, 'Success');
-                        Navigator.pushNamed(context, ChatView.chatViewId,arguments: emailAddress);
+                        Navigator.pushNamed(context, ChatView.chatViewId,
+                            arguments: emailAddress);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'invalid-credential') {
                           showSnackBar(context, 'Invalid user');
@@ -95,9 +94,7 @@ class _LogInViewState extends State<LogInView> {
                         showSnackBar(context, ex.toString());
                       }
                       inAsyncCall = false;
-                      setState(() {
-                        
-                      });
+                      setState(() {});
                     }
                   },
                 ),

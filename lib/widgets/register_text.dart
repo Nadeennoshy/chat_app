@@ -11,15 +11,13 @@ class RegisterText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(registerText,
-        style: const TextStyle(
-          color: Colors.white,
-        ),
+        Text(
+          registerText,
+          style: const TextStyle(
+            color: Colors.white,
+          ),
         ),
       ],
     );
   }
 }
-
-
-

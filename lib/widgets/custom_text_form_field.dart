@@ -8,33 +8,28 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText = false,
   });
   final String hintText;
-  final Function(String ) onChanged;
+  final Function(String) onChanged;
   final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (data){
-        if(data!.isEmpty){
+      validator: (data) {
+        if (data!.isEmpty) {
           return 'Field is required';
         }
       },
       obscureText: obscureText,
       onChanged: onChanged,
       decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: const TextStyle(
-          color: Colors.white
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5.0),
-          
-        ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
+          hintText: hintText,
+          hintStyle: const TextStyle(color: Colors.white),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
             color: Colors.white,
-          )
-        )
-      ),
+          ))),
     );
   }
 }

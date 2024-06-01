@@ -11,19 +11,19 @@ class ChatView extends StatelessWidget {
   ChatView({super.key});
   static String chatViewId = 'chatView';
   CollectionReference messages =
-        FirebaseFirestore.instance.collection(kMessageCollection);
+      FirebaseFirestore.instance.collection(kMessageCollection);
   TextEditingController controller = TextEditingController();
   final _controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     var email = ModalRoute.of(context)!.settings.arguments;
-      return StreamBuilder<QuerySnapshot>(
+    return StreamBuilder<QuerySnapshot>(
         stream: messages.orderBy(kCreatedAt, descending: true).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data != null) {
             List<MessageModel> messagesList = [];
-            for (int i = 0; i<snapshot.data!.docs.length; i++) {
+            for (int i = 0; i < snapshot.data!.docs.length; i++) {
               messagesList.add(MessageModel.fromJson(snapshot.data!.docs[i]));
             }
             return Scaffold(
@@ -94,8 +94,8 @@ class ChatView extends StatelessWidget {
                           //   color: kPrimaryColor,
                           // ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          )),
+                        borderRadius: BorderRadius.circular(15),
+                      )),
                     ),
                   ),
                 ],
@@ -105,5 +105,5 @@ class ChatView extends StatelessWidget {
             return Text('Loading.......................');
           }
         });
-    }
   }
+}

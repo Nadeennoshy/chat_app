@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -21,9 +21,9 @@ class ChatApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        LogInView.loginId :(context) =>  LogInView(),
-        RegisterView.registerId: (context)=> RegisterView(),
-        ChatView.chatViewId:(context) =>  ChatView(),
+        LogInView.loginId: (context) => LogInView(),
+        RegisterView.registerId: (context) => RegisterView(),
+        ChatView.chatViewId: (context) => ChatView(),
       },
       initialRoute: LogInView.loginId,
     );

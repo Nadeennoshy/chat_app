@@ -15,16 +15,20 @@ class NavigateText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(haveAccount,
-        style: const TextStyle(
-          color: Colors.white,
-        ),),
+        Text(
+          haveAccount,
+          style: const TextStyle(
+            color: Colors.white,
+          ),
+        ),
         GestureDetector(
           onTap: onTap,
-          child: Text(navigateText,
-          style: const TextStyle(
-            color: Color(0xffC7EDE6),
-          ),),
+          child: Text(
+            navigateText,
+            style: const TextStyle(
+              color: Color(0xffC7EDE6),
+            ),
+          ),
         )
       ],
     );

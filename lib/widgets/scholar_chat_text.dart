@@ -10,12 +10,13 @@ class ScolarChatText extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Scolar Chat',
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'Pacifico',
-          fontSize: 28,
-        ),
+        Text(
+          'Scolar Chat',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Pacifico',
+            fontSize: 28,
+          ),
         ),
       ],
     );
